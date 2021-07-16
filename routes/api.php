@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\SedeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('carreras', [CarreraController::class, 'getAll'])->name('Carrera:getAll');
+Route::get('sedes', [SedeController::class, 'getAll'])->name('Sede:getAll');
