@@ -28,4 +28,5 @@ class Carrera extends Model
         'regimen',
     ];
 
+
 }
