@@ -1,6 +1,6 @@
 @extends('layout.base')
 @section('titulo')
-    Material USM
+    Registro
 @endsection
 @section('contenido')
     <div class="columns">
@@ -33,7 +33,4 @@
             </p>
         </div>
     </div>
-@endsection
-@section('javascript')
-    console.log({{$sedes}})
 @endsection

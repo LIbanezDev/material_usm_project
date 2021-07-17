@@ -4,22 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Sede extends Model
+class TipoArchivo extends Model
 {
     use HasFactory;
 
-    protected $table = 'sede';
+    protected $table = 'tipo_archivo';
 
-    public function carreras(): BelongsToMany
+    function archivos(): HasMany
     {
-        return $this->belongsToMany(Carrera::class, 'sede_carrera');
+        return $this->hasMany(Archivo::class, 'tipo_id');
     }
 
     protected $fillable = [
         'nombre',
-        'ciudad',
+        'puntaje',
     ];
+
 }
