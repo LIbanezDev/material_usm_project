@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Archivo;
 use App\Models\Asignatura;
 use App\Models\Carrera;
 use App\Models\Sede;
+use App\Models\TipoArchivo;
 use Illuminate\Database\Seeder;
 
 class AsignaturasTableSeeder extends Seeder
@@ -43,16 +45,37 @@ class AsignaturasTableSeeder extends Seeder
      */
     public function run()
     {
-        $sede = new Sede();
-        $sede->nombre = 'Jose Miguel Carrera';
-        $sede->ciudad = 'Vina del Mar';
-        $sede->save();
+        $sedes = [
+            ['nombre' => 'Campus Casa Central Valparaiso', 'direccion' => 'Avenida España 1680, Valparaíso', 'imagen' => 'valparaiso.jpeg'],
+            ['nombre' => 'Campus San Joaquin', 'direccion' => 'Avenida Vicuña Mackenna 3939, San Joaquín, Santiago', 'imagen' => 'san-joaquin.jpeg'],
+            ['nombre' => 'Campus Vitacura', 'direccion' => 'Avenida Santa María 6400, Vitacura, Santiago', 'imagen' => 'vitacura.jpeg'],
+            ['nombre' => 'Sede Vina del Mar', 'direccion' => 'Avenida Federico Santa María 6090, Viña del Mar', 'imagen' => 'vina-del-mar.jpeg'],
+            ['nombre' => 'Sede Concepción', 'direccion' => 'Arteaga Alemparte 943, Hualpén, Concepción', 'imagen' => 'concepcion.jpeg'],
+            ['nombre' => 'Campus Guayaquil', 'direccion' => 'Av. Pdte. Carlos Julio Arosemena Tola Km 4.5, Guayaquil 090615, Ecuador', 'imagen' => 'ecuador.jpeg'],
+        ];
+        foreach ($sedes as $sede) {
+            $new_sede = new Sede();
+            $new_sede->nombre = $sede['nombre'];
+            $new_sede->direccion = $sede['direccion'];
+            $new_sede->imagen = $sede['imagen'];
+            $new_sede->save();
+        }
 
         $carrera = new Carrera();
         $carrera->nombre = "Tecnico Universitario en Informatica";
         $carrera->regimen = 'D';
         $carrera->save();
-        $carrera->sedes()->save($sede);
+        $carrera->sedes()->save(Sede::find(4));
+
+        $tipo_archivo = new TipoArchivo();
+        $tipo_archivo->nombre = 'Certamen';
+        $tipo_archivo->puntaje = 20;
+        $tipo_archivo->save();
+
+        $tipo_archivo = new TipoArchivo();
+        $tipo_archivo->nombre = 'Control';
+        $tipo_archivo->puntaje = 10;
+        $tipo_archivo->save();
 
         for ($i = 0; $i < count($this->asignaturas); $i++) {
             $asignatura = new Asignatura();
@@ -60,5 +83,28 @@ class AsignaturasTableSeeder extends Seeder
             $asignatura->save();
             $carrera->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->asignaturas[$i]['semestre']]]);
         }
+        $archivo = new Archivo();
+        $archivo->nombre = 'orange_cat.jpeg';
+        $archivo->tipo_id = 1;
+        $archivo->asignatura_id = 1;
+        $archivo->save();
+
+        $archivo = new Archivo();
+        $archivo->nombre = 'black_cat.jpeg';
+        $archivo->tipo_id = 1;
+        $archivo->asignatura_id = 1;
+        $archivo->save();
+
+        $archivo = new Archivo();
+        $archivo->nombre = 'calico_cat.jpeg';
+        $archivo->tipo_id = 2;
+        $archivo->asignatura_id = 1;
+        $archivo->save();
+
+        $archivo = new Archivo();
+        $archivo->nombre = 'BD-2019-C1.pdf';
+        $archivo->tipo_id = 1;
+        $archivo->asignatura_id = 17;
+        $archivo->save();
     }
 }

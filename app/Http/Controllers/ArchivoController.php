@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Archivo;
 use Illuminate\Http\Request;
 
-class ArchivoMainController extends MainController
+class ArchivoController extends MainController
 {
     function get(Request $request, $id = null): array
     {

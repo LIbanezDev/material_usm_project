@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sede;
 
-class SedeMainController extends MainController
+class SedeController extends MainController
 {
     function getAll(): array
     {

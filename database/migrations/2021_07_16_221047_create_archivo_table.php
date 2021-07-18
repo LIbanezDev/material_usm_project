@@ -17,7 +17,7 @@ class CreateArchivoTable extends Migration
             $table->id();
             $table->string('nombre', 30);
             $table->unsignedBigInteger('asignatura_id');
-            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->unsignedBigInteger('usuario_id')->nullable()->default(null);
             $table->unsignedBigInteger('tipo_id');
             $table->foreign('asignatura_id')->references('id')->on('asignatura');
             $table->foreign('usuario_id')->references('id')->on('usuario');

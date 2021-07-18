@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @yield('css')
     </style>
@@ -16,8 +17,8 @@
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="logo">
+            <a class="navbar-item" href="/">
+                <img src="{{asset('assets/usm/logo.png')}}" width="50" height="28" alt="logo">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -30,32 +31,29 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
-                    Home
+                <a class="navbar-item" href="/">
+                    Inicio
                 </a>
 
-                <a class="navbar-item">
-                    Documentation
+                <a class="navbar-item" href="{{route('Contribuir')}}">
+                    Contribuir
                 </a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        More
+                        Mas
                     </a>
 
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="{{route('Static::about')}}">
                             About
                         </a>
-                        <a class="navbar-item">
-                            Jobs
-                        </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="{{route('Static::contact')}}">
                             Contact
                         </a>
-                        <hr class="navbar-divider¡">
-                        <a class="navbar-item">
-                            Report an issue
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" target="_blank" href="https://github.com/LIbanezDev/material_usm_project">
+                            GitHub
                         </a>
                     </div>
                 </div>
@@ -64,10 +62,10 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary">
+                        <a class="button is-info" href="{{route('Auth::register')}}">
                             <strong>Sign up</strong>
                         </a>
-                        <a class="button is-light">
+                        <a class="button is-light" href="{{route('Auth::login')}}">
                             Log in
                         </a>
                     </div>

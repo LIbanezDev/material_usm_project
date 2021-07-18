@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carrera;
 use Illuminate\Http\Request;
 
-class CarreraMainController extends MainController
+class CarreraController extends MainController
 {
     function getAll()
     {
