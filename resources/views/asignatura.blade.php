@@ -5,7 +5,6 @@
 @section('contenido')
     <div class="columns">
         <div class="column is-4-desktop is-12-mobile">
-            <h2> {{$filters['ok']}}</h2>
             <form id="filter-form">
                 @foreach($tipos_archivo as $tipo)
                     <div class="field">
