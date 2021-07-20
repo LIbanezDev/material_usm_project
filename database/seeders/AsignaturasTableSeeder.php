@@ -188,6 +188,7 @@ class AsignaturasTableSeeder extends Seeder
             ['nombre' => 'Sede Concepción', 'direccion' => 'Arteaga Alemparte 943, Hualpén, Concepción', 'imagen' => 'concepcion.jpeg'],
             ['nombre' => 'Campus Guayaquil', 'direccion' => 'Av. Pdte. Carlos Julio Arosemena Tola Km 4.5, Guayaquil 090615, Ecuador', 'imagen' => 'ecuador.jpeg'],
         ];
+
         foreach ($sedes as $sede) {
             $new_sede = new Sede();
             $new_sede->nombre = $sede['nombre'];

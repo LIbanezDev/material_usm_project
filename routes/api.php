@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::post('archivos', [ArchivoController::class, 'storeArchivo'])->name('Archivo:create');
 Route::get('carreras', [CarreraController::class, 'getAll'])->name('Carrera:getAll');
 Route::post('carreras', [CarreraController::class, 'create'])->name('Carrera:create');
 Route::get('sedes', [SedeController::class, 'getAll'])->name('Sede:getAll');
