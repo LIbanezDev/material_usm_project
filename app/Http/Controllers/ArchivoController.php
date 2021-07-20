@@ -3,17 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Archivo;
+use App\Models\Asignatura;
+use App\Models\Sede;
+use App\Models\TipoArchivo;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ArchivoController extends MainController
 {
     public function storeArchivo(Request $request)
     {
+        $params = $request->all();
+        $asignatura = Asignatura::find((int)$params['asignatura']);
+        $tipo_archivo = TipoArchivo::find((int)$params['tipo']);
+        $generated_new_name =
+            $tipo_archivo->nombre . '-' . $asignatura->nombre . '-' . time() . '.' .
+            $request->file->getClientOriginalExtension();
         $upload_path = public_path('material');
-        $file_name = $request->file->getClientOriginalName();
-        $generated_new_name = time() . '.' . $request->file->getClientOriginalExtension();
         $request->file->move($upload_path, $generated_new_name);
-        return response()->json(['success' => 'You have successfully uploaded "' . $file_name . '"']);
+
+        $archivo = new Archivo();
+        $archivo->nombre = $generated_new_name;
+        $archivo->asignatura()->associate($asignatura);
+        $archivo->tipo()->associate($tipo_archivo);
+        $archivo->save();
+        return response()->json(['success' => 'You have successfully uploaded "' . $generated_new_name . '"'], 201);
     }
 
     function get(Request $request, $id = null): array

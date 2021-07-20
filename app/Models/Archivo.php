@@ -14,4 +14,8 @@ class Archivo extends Model
     function tipo() {
         return $this->belongsTo(TipoArchivo::class, 'tipo_id');
     }
+
+    function asignatura() {
+        return $this->belongsTo(Asignatura::class, 'asignatura_id');
+    }
 }

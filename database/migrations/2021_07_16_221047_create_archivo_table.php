@@ -15,7 +15,7 @@ class CreateArchivoTable extends Migration
     {
         Schema::create('archivo', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 30);
+            $table->string('nombre', 80);
             $table->unsignedBigInteger('asignatura_id');
             $table->unsignedBigInteger('usuario_id')->nullable()->default(null);
             $table->unsignedBigInteger('tipo_id');

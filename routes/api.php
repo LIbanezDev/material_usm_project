@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArchivoController;
+use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\CarreraController;
 use App\Http\Controllers\SedeController;
 use Illuminate\Http\Request;
@@ -22,9 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('archivos', [ArchivoController::class, 'storeArchivo'])->name('Archivo:create');
+Route::get('sedes', [SedeController::class, 'getAll'])->name('Sede:getAll');
 Route::get('carreras', [CarreraController::class, 'getAll'])->name('Carrera:getAll');
 Route::post('carreras', [CarreraController::class, 'create'])->name('Carrera:create');
-Route::get('sedes', [SedeController::class, 'getAll'])->name('Sede:getAll');
+Route::get('asignaturas', [AsignaturaController::class, 'getAll'])->name('Asignatura:getAll');
+
+
+Route::post('archivos', [ArchivoController::class, 'storeArchivo'])->name('Archivo:create');
 Route::get('archivos/{id?}', [ArchivoController::class, 'get'])->name('Archivo:get');
 

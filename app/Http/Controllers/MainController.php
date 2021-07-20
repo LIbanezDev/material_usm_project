@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asignatura;
 use App\Models\Carrera;
 use App\Models\Sede;
+use App\Models\TipoArchivo;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -53,6 +54,8 @@ class MainController extends BaseController
 
     public function contribuir()
     {
-        return view('contribuir');
+        $sedes = Sede::all();
+        $tipos_archivo = TipoArchivo::all();
+        return view('contribuir', compact('sedes', 'tipos_archivo'));
     }
 }
