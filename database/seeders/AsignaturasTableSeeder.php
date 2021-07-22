@@ -171,8 +171,131 @@ class AsignaturasTableSeeder extends Seeder
         ['nombre' => "Inicio Proceso de Titulación (*)", 'semestre' => 10],
         ['nombre' => "Término Proceso de Titulación (*)", 'semestre' => 11],
     ];
+    private $mercadotecnia = [
+        ['nombre' => "Matematicas I", 'semestre' => 1],
+        ['nombre' => "Mercadotecnia", 'semestre' => 1],
+        ['nombre' => "Computacion aplicada al marketing", 'semestre' => 1],
+        ['nombre' => "Lenguaje", 'semestre' => 1],
+        ['nombre' => "Realidad del Pais", 'semestre' => 1],
+        ['nombre' => "Macroeconomia", 'semestre' => 1],
+        ['nombre' => "Matematicas II", 'semestre' => 2],
+        ['nombre' => "Gestion de Marketing", 'semestre' => 2],
+        ['nombre' => "Comportamiento del consumidor y neuromarketing", 'semestre' => 2],
+        ['nombre' => "Publicidad y Taller de Diseño Grafico", 'semestre' => 2],
+        ['nombre' => "Contabilidad Financiera", 'semestre' => 2],
+        ['nombre' => "Microeconomia", 'semestre' => 2],
+        ['nombre' => "Matematicas III", 'semestre' => 3],
+        ['nombre' => "Estadistica para la Gestion I", 'semestre' => 3],
+        ['nombre' => "Logistica y Distribucion", 'semestre' => 3],
+        ['nombre' => "Comunicacion integrada y Medios digitales", 'semestre' => 3],
+        ['nombre' => "Administracion de Empresas", 'semestre' => 3],
+        ['nombre' => "Contabilidad de costos", 'semestre' => 3],
+        ['nombre' => "Estadistica para la Gestion II", 'semestre' => 4],
+        ['nombre' => "Investigacion de Mercados I", 'semestre' => 4],
+        ['nombre' => "Gestion de Medios de comunicacion", 'semestre' => 4],
+        ['nombre' => "Venta al detalle y merchandising", 'semestre' => 4],
+        ['nombre' => "Gestion del Talento Humano", 'semestre' => 4],
+        ['nombre' => "Control y Presupuesto", 'semestre' => 4],
+        ['nombre' => "Metodos Cuantitativos para el Marketing", 'semestre' => 5],
+        ['nombre' => "Investigacion de Mercados II", 'semestre' => 5],
+        ['nombre' => "Tecnicas de Negociacion y Ventas", 'semestre' => 5],
+        ['nombre' => "Marketing de Servicios", 'semestre' => 5],
+        ['nombre' => "Politica de Precios", 'semestre' => 5],
+        ['nombre' => "Finanzas de corto plazo", 'semestre' => 5],
+        ['nombre' => "Canales y Trade Marketing", 'semestre' => 6],
+        ['nombre' => "Marketing Industrial y Calidad Total", 'semestre' => 6],
+        ['nombre' => "Marketing Internacional, Franquisias y Licencias", 'semestre' => 6],
+        ['nombre' => "Legislacion Comercial", 'semestre' => 6],
+        ['nombre' => "Ingles de Negocios", 'semestre' => 6],
+        ['nombre' => "Finanzas de Largo plazo", 'semestre' => 6],
+        ['nombre' => "Gerencia de ventas", 'semestre' => 7],
+        ['nombre' => "Marketing Relacional", 'semestre' => 7],
+        ['nombre' => "Sistemas de Informacion de Marketing", 'semestre' => 7],
+        ['nombre' => "Sistemas de informacion en la organizacion", 'semestre' => 7],
+        ['nombre' => "Catedra de la Paz", 'semestre' => 7],
+        ['nombre' => "Evaluacion de Proyectos de Marketing", 'semestre' => 7],
+        ['nombre' => "Benchmarking", 'semestre' => 8],
+        ['nombre' => "Marketing Estrategico", 'semestre' => 8],
+        ['nombre' => "Electiva I", 'semestre' => 8],
+        ['nombre' => "Electiva II", 'semestre' => 8],
+        ['nombre' => "Simulacion de negocios", 'semestre' => 8],
+        ['nombre' => "Etica Empresarial", 'semestre' => 8],
+        ['nombre' => "Gerencia de Producto y Marca", 'semestre' => 9],
+        ['nombre' => "Gerencia de Marketing", 'semestre' => 9],
+        ['nombre' => "Creacion de Empresas", 'semestre' => 9],
+        ['nombre' => "Electiva III", 'semestre' => 9],
+        ['nombre' => "Gobierno Corporativo", 'semestre' => 9],
+        ['nombre' => "Seminario de Titulo", 'semestre' => 9],
+    ];
 
-
+    private $fisica = [
+        ['nombre' => "Física General I", 'semestre' => 1],
+        ['nombre' => "Matemática I", 'semestre' => 1],
+        ['nombre' => "Química y Sociedad", 'semestre' => 1],
+        ['nombre' => "Introducción a la Física Contemporánea", 'semestre' => 1],
+        ['nombre' => "Educación Física I", 'semestre' => 1],
+        ['nombre' => "Física General III", 'semestre' => 2],
+        ['nombre' => "Matemática II", 'semestre' => 2],
+        ['nombre' => "Programación", 'semestre' => 2],
+        ['nombre' => "Instrumentación Científica", 'semestre' => 2],
+        ['nombre' => "Educación Física II", 'semestre' => 2],
+        ['nombre' => "Humanista I", 'semestre' => 2],
+        ['nombre' => "Física General II", 'semestre' => 3],
+        ['nombre' => "Matemática III", 'semestre' => 3],
+        ['nombre' => "Física Experimental", 'semestre' => 3],
+        ['nombre' => "Deportes", 'semestre' => 3],
+        ['nombre' => "Inglés I", 'semestre' => 3],
+        ['nombre' => "Humanista II", 'semestre' => 3],
+        ['nombre' => "Fisica General IV", 'semestre' => 4],
+        ['nombre' => "Matemática IV", 'semestre' => 4],
+        ['nombre' => "Probabilidad y Estadística", 'semestre' => 4],
+        ['nombre' => "Mecánica Intermedia I", 'semestre' => 4],
+        ['nombre' => "Inglés II", 'semestre' => 4],
+        ['nombre' => "Campos Electromagnéticos I", 'semestre' => 5],
+        ['nombre' => "Termodinámica y Mecánica Estadística", 'semestre' => 5],
+        ['nombre' => "Métodos de la Física Matemática", 'semestre' => 5],
+        ['nombre' => "Mecánica Intermedia II", 'semestre' => 5],
+        ['nombre' => "Inglés III", 'semestre' => 5],
+        ['nombre' => "Campos Electromagnéticos II", 'semestre' => 6],
+        ['nombre' => "Física Cuántica I", 'semestre' => 6],
+        ['nombre' => "Física Experimental Avanzada", 'semestre' => 6],
+        ['nombre' => "Análisis Numérico", 'semestre' => 6],
+        ['nombre' => "Inglés IV", 'semestre' => 6],
+        ['nombre' => "Física Cuántica II", 'semestre' => 7],
+        ['nombre' => "Introducción a la Física de Alta Energía", 'semestre' => 7],
+        ['nombre' => "Física Computacional", 'semestre' => 7],
+        ['nombre' => "Optativo Avanzado I", 'semestre' => 7],
+        ['nombre' => "El Método Científico", 'semestre' => 7],
+        ['nombre' => "Optativo Avanzado II", 'semestre' => 8],
+        ['nombre' => "Optativo Avanzado III", 'semestre' => 8],
+        ['nombre' => "Optativo Avanzado IV", 'semestre' => 8],
+        ['nombre' => "Introducción a la Física de la Materia Condensada", 'semestre' => 8],
+        ['nombre' => "Seminario de Grado", 'semestre' => 8],
+    ];
+    private $empresas = [
+        ['nombre' => "Fundamentos Económicos para la Administración", 'semestre' => 1],
+        ['nombre' => "Administración de Empresas", 'semestre' => 1],
+        ['nombre' => "Tecnologías para la Administración", 'semestre' => 1],
+        ['nombre' => "Taller de Habiliadades Sociales y Comunicacionales", 'semestre' => 1],
+        ['nombre' => "Elementos de la Matemática", 'semestre' => 1],
+        ['nombre' => "Inglés I", 'semestre' => 1],
+        ['nombre' => "Economía para la Administración", 'semestre' => 2],
+        ['nombre' => "Comercialización I", 'semestre' => 2],
+        ['nombre' => "Aspectos Legales de la Administración", 'semestre' => 2],
+        ['nombre' => "Matemática Aplicada", 'semestre' => 2],
+        ['nombre' => "Inglés II", 'semestre' => 2],
+        ['nombre' => "Matemática Financiera", 'semestre' => 3],
+        ['nombre' => "Proceso de Control en la Administración", 'semestre' => 3],
+        ['nombre' => "Comercialización II", 'semestre' => 3],
+        ['nombre' => "Contabilidad para la Administración", 'semestre' => 3],
+        ['nombre' => "Programación y Tratamiento de datos para la Gestión", 'semestre' => 3],
+        ['nombre' => "Educación Física", 'semestre' => 3],
+        ['nombre' => "Gestión de Personas", 'semestre' => 4],
+        ['nombre' => "Taller de Integración", 'semestre' => 4],
+        ['nombre' => "Taller de Creatividad y Emprendimiento", 'semestre' => 4],
+        ['nombre' => "Costos y Presupuestos para la Administración", 'semestre' => 4],
+        ['nombre' => "Optativo", 'semestre' => 4],
+    ];
     /**
      * Run the database seeds.
      *
@@ -225,6 +348,27 @@ class AsignaturasTableSeeder extends Seeder
         $carrera_arquitectura->sedes()->save(Sede::find(2));
         $carrera_arquitectura->sedes()->save(Sede::find(1));
 
+        $carrera_mercadotecnia = new Carrera();
+        $carrera_mercadotecnia->nombre = "Mercadotecnia";
+        $carrera_mercadotecnia->regimen = 'D';
+        $carrera_mercadotecnia->save();
+        $carrera_mercadotecnia->sedes()->save(Sede::find(6));
+
+        $carrera_fisica = new Carrera();
+        $carrera_fisica->nombre = "Licenciatura en Fisica";
+        $carrera_fisica->regimen = 'D';
+        $carrera_fisica->save();
+        $carrera_fisica->sedes()->save(Sede::find(1));
+        $carrera_fisica->sedes()->save(Sede::find(2));
+
+        $carrera_empresas = new Carrera();
+        $carrera_empresas->nombre = "Técnico Universitario en Administración de Empresas";
+        $carrera_empresas->regimen = 'D';
+        $carrera_empresas->save();
+        $carrera_empresas->sedes()->save(Sede::find(3));
+        $carrera_empresas->sedes()->save(Sede::find(4));
+        $carrera_empresas->sedes()->save(Sede::find(5));
+
         $tipo_archivo = new TipoArchivo();
         $tipo_archivo->nombre = 'Certamen';
         $tipo_archivo->puntaje = 20;
@@ -258,6 +402,24 @@ class AsignaturasTableSeeder extends Seeder
             $asignatura->nombre = $this->arquitectura[$i]['nombre'];
             $asignatura->save();
             $carrera_arquitectura->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->arquitectura[$i]['semestre']]]);
+        }
+        for ($i = 0; $i < count($this->mercadotecnia); $i++) {
+            $asignatura = new Asignatura();
+            $asignatura->nombre = $this->mercadotecnia[$i]['nombre'];
+            $asignatura->save();
+            $carrera_mercadotecnia->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->mercadotecnia[$i]['semestre']]]);
+        }
+        for ($i = 0; $i < count($this->fisica); $i++) {
+            $asignatura = new Asignatura();
+            $asignatura->nombre = $this->fisica[$i]['nombre'];
+            $asignatura->save();
+            $carrera_fisica->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->fisica[$i]['semestre']]]);
+        }
+        for ($i = 0; $i < count($this->empresas); $i++) {
+            $asignatura = new Asignatura();
+            $asignatura->nombre = $this->empresas[$i]['nombre'];
+            $asignatura->save();
+            $carrera_empresas->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->empresas[$i]['semestre']]]);
         }
         $archivo = new Archivo();
         $archivo->nombre = 'orange_cat.jpeg';
