@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $credentials = request()->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, request()->remember)) {
             request()->session()->regenerate();
 
             return ['ok' => true];
@@ -33,15 +33,20 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $data = $request->all();
-        $usuario = new Usuario();
-        $usuario->name = $data['name'];
-        $usuario->email = $data['email'];
-        $usuario->email_verified_at = now();
-        $usuario->remember_token = Str::random(10);
-        $usuario->password = Hash::make($data['name']);
-        $usuario->save();
-        return ['ok' => true];
+        try {
+            $data = $request->all();
+            $usuario = new Usuario();
+            $usuario->name = $data['name'];
+            $usuario->email = $data['email'];
+            $usuario->email_verified_at = now();
+            $usuario->remember_token = Str::random(10);
+            $usuario->password = Hash::make($data['password']);
+            $usuario->save();
+            return ['ok' => true];
+        } catch (\Exception $ex) {
+            return ['ok' => false, 'msg' => 'El email ya se encuentra en uso.'];
+        }
+
     }
 
 }

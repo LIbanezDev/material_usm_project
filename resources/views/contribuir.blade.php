@@ -3,8 +3,8 @@
     Material USM | Contribuir
 @endsection
 @section('contenido')
-    <div class="columns is-multiline">
-        <div class="column is-4-desktop is-12-tablet is-12-mobile box">
+    <div class="columns is-multiline is-centered">
+        {{--<div class="column is-4-desktop is-12-tablet is-12-mobile box">
             <h2 class="title has-text-centered"> Carrera </h2>
             <form id="form-agregar-archivo">
                 <div class="field">
@@ -41,9 +41,9 @@
                 </div>
                 <button class="button is-success"> Subir</button>
             </form>
-        </div>
-        <div class="column box">
-            <h2 class="title has-text-centered"> Archivo </h2>
+        </div>--}}
+        <div class="column is-4">
+            <h2 class="title"> Archivo </h2>
             <form id="form-agregar-archivo">
                 <div class="field">
                     <label class="label" for="input-sede">Sede</label>

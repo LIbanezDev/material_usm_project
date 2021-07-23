@@ -59,17 +59,23 @@
                         </a>
                     </div>
                 </div>
+                <div class="navbar-item">
+                    <button class="button is-white"
+                            onclick="window.open('https://github.com/LIbanezDev/material_usm_project', '_blank');">
+                            <span class="fa fa-github">
+                            </span>
+                    </button>
+                </div>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
                     @auth()
-                        <a class="navbar-item"> <strong>{{Auth::user()->name}}</strong></a>
+                        <p class="navbar-item"><strong>{{Auth::user()->name}}</strong></p>
                         <form action="/logout" method="POST">
                             @csrf
-                            <button class="button is-white">
-                                <i class="fa fa-power-off has-text-danger"
-                                   onclick="this.closest('form').submit()">
-                                </i>
+                            <button class="button is-white" onclick="this.closest('form').submit()">
+                                <span class="fa fa-power-off has-text-danger">
+                                </span>
                             </button>
                         </form>
                     @else
