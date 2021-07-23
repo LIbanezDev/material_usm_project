@@ -53,23 +53,35 @@
                             Contact
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item" target="_blank" href="https://github.com/LIbanezDev/material_usm_project">
+                        <a class="navbar-item" target="_blank"
+                           href="https://github.com/LIbanezDev/material_usm_project">
                             GitHub
                         </a>
                     </div>
                 </div>
             </div>
-
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-info" href="{{route('Auth::register')}}">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light" href="{{route('Auth::login')}}">
-                            Log in
-                        </a>
-                    </div>
+                    @auth()
+                        <a class="navbar-item"> <strong>{{Auth::user()->name}}</strong></a>
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button class="button is-white">
+                                <i class="fa fa-power-off has-text-danger"
+                                   onclick="this.closest('form').submit()">
+                                </i>
+                            </button>
+                        </form>
+                    @else
+                        <div class="buttons">
+                            <a class="button is-info" href="{{route('Auth::register')}}">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="{{route('Auth::login')}}">
+                                Log in
+                            </a>
+                        </div>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -81,6 +93,7 @@
 <footer>
 
 </footer>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{asset('js/axios_config.js')}}"></script>
 @yield('script')

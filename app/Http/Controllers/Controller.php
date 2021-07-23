@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
-class MainController extends BaseController
+class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -21,6 +21,12 @@ class MainController extends BaseController
     {
         $sedes = Sede::with('carreras')->get();
         return view('inicio', compact('sedes'));
+    }
+
+    public function sede($id_sede)
+    {
+        $sede = Sede::with('carreras')->findOrFail($id_sede);
+        return view('sede', compact('sede'));
     }
 
     public function carreras($id_carrera)
@@ -44,12 +50,6 @@ class MainController extends BaseController
             ->where('archivo.asignatura_id', $id_asignatura)
             ->groupBy('tipo_archivo.id')->get();
         return view('asignatura', compact('asignatura', 'tipos_archivo', 'filters'));
-    }
-
-    public function sede($id_sede)
-    {
-        $sede = Sede::with('carreras')->findOrFail($id_sede);
-        return view('sede', compact('sede'));
     }
 
     public function contribuir()

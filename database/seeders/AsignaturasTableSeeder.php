@@ -7,6 +7,7 @@ use App\Models\Asignatura;
 use App\Models\Carrera;
 use App\Models\Sede;
 use App\Models\TipoArchivo;
+use App\Models\Usuario;
 use Illuminate\Database\Seeder;
 
 class AsignaturasTableSeeder extends Seeder
@@ -312,6 +313,9 @@ class AsignaturasTableSeeder extends Seeder
             ['nombre' => 'Campus Guayaquil', 'direccion' => 'Av. Pdte. Carlos Julio Arosemena Tola Km 4.5, Guayaquil 090615, Ecuador', 'imagen' => 'ecuador.jpeg'],
         ];
 
+        Usuario::factory()->create(['name' => 'Lucas Vergara', 'email' => 'lucas@gmail.com']);
+        Usuario::factory()->create(['name' => 'Benjamin Bahamondes', 'email' => 'bejamin@gmail.com']);
+
         foreach ($sedes as $sede) {
             $new_sede = new Sede();
             $new_sede->nombre = $sede['nombre'];
@@ -421,6 +425,7 @@ class AsignaturasTableSeeder extends Seeder
             $asignatura->save();
             $carrera_empresas->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->empresas[$i]['semestre']]]);
         }
+
         $archivo = new Archivo();
         $archivo->nombre = 'orange_cat.jpeg';
         $archivo->tipo_id = 1;

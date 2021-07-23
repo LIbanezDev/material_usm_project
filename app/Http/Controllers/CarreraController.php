@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carrera;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CarreraController extends MainController
+class CarreraController extends Controller
 {
     function getAll(Request $request)
     {

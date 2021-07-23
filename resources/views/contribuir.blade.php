@@ -4,14 +4,52 @@
 @endsection
 @section('contenido')
     <div class="columns is-multiline">
-        <div class="column is-half is-offset-one-quarter box">
-            <h2 class="title"> Subir archivo </h2>
-            <form id="formAgregarArchivo">
+        <div class="column is-4-desktop is-12-tablet is-12-mobile box">
+            <h2 class="title has-text-centered"> Carrera </h2>
+            <form id="form-agregar-archivo">
                 <div class="field">
                     <label class="label" for="input-sede">Sede</label>
                     <div class="control">
                         <div class="select">
-                            <select id="input-sede">
+                            <select id="input-sede-carrera">
+                                <option selected disabled> Selecciona una opción</option>
+                                @foreach($sedes as $sede)
+                                    <option value="{{$sede->id}}">{{$sede->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="button is-success"> Subir</button>
+            </form>
+        </div>
+        <div class="column is-4-desktop is-12-tablet box">
+            <h2 class="title has-text-centered"> Asignatura </h2>
+            <form id="form-agregar-asignatura">
+                <div class="field">
+                    <label class="label" for="input-sede">Sede</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="input-sede-asignatura">
+                                <option selected disabled> Selecciona una opción</option>
+                                @foreach($sedes as $sede)
+                                    <option value="{{$sede->id}}">{{$sede->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="button is-success"> Subir</button>
+            </form>
+        </div>
+        <div class="column box">
+            <h2 class="title has-text-centered"> Archivo </h2>
+            <form id="form-agregar-archivo">
+                <div class="field">
+                    <label class="label" for="input-sede">Sede</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="input-sede-archivo">
                                 <option selected disabled> Selecciona una opción</option>
                                 @foreach($sedes as $sede)
                                     <option value="{{$sede->id}}">{{$sede->nombre}}</option>
@@ -65,72 +103,17 @@
                             Selecciona un archivo…
                           </span>
                             <span id="file-name" class="is-hidden">
-
                             </span>
                         </span>
                         </label>
                     </div>
                 </div>
-                <button class="button is-success"> Subir</button>
+                <button class="button is-success" type="submit"> Subir</button>
             </form>
         </div>
     </div>
 @endsection
-@section('javascript')
-    const DEFAULT_OPTION = `
-    <option selected disabled> Selecciona una opción</option>`
-    const fileNameSpan = document.getElementById('file-name');
-    const sedeSelect = document.getElementById('input-sede');
-    const carreraSelect = document.getElementById('input-carrera');
-    const asignaturaSelect = document.getElementById('input-asignatura');
-    const tipoArchivoSelect = document.getElementById('input-tipo_archivo');
-
-    sedeSelect.addEventListener('change', async () => {
-    carreraSelect.disabled = true;
-    carreraSelect.innerHTML = DEFAULT_OPTION;
-    asignaturaSelect.innerHTML = DEFAULT_OPTION;
-    const url = `/api/carreras?sede=${sedeSelect.value}`
-    const {data} = await axios.get(url)
-    data.forEach((carrera) => {
-    carreraSelect.innerHTML += `
-    <option value="${carrera.id}"> ${carrera.nombre}</option>`
-    })
-    carreraSelect.disabled = false;
-    })
-
-    carreraSelect.addEventListener('change', async() => {
-    asignaturaSelect.disabled = true;
-    asignaturaSelect.innerHTML = DEFAULT_OPTION;
-    const url = `/api/asignaturas?carrera=${carreraSelect.value}`
-    const {data} = await axios.get(url)
-    data.forEach(asignatura => {
-    asignaturaSelect.innerHTML += `
-    <option value="${asignatura.id}"> ${asignatura.nombre}</option>`
-    })
-    asignaturaSelect.disabled = false;
-    })
-
-    fileNameSpan.classList.remove('is-hidden');
-    fileNameSpan.classList.add('file-name');
-    document.getElementById('archivo-input').addEventListener('change', () => {
-    fileNameSpan.innerText = document.getElementById('archivo-input').files[0].name
-    })
-
-    document.getElementById('formAgregarArchivo').addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const url = 'api/archivos';
-    const formData = new FormData();
-    const archivo = document.getElementById('archivo-input').files[0];
-    formData.append('file', archivo)
-    formData.append('asignatura', asignaturaSelect.value)
-    formData.append('tipo', tipoArchivoSelect.value)
-    const config = {
-    headers: {
-    'content-type': 'multipart/form-data'
-    }
-    }
-    const res = await axios.post(url, formData, config)
-    console.log(res.data)
-    })
+@section('script')
+    <script src="{{asset('js/contribuir.js')}}"></script>
 @endsection
 

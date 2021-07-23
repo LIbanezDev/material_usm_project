@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivo;
 use App\Models\Asignatura;
-use App\Models\Sede;
 use App\Models\TipoArchivo;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ArchivoController extends MainController
+class ArchivoController extends Controller
 {
     public function storeArchivo(Request $request)
     {
