@@ -23,17 +23,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Sedes
-Route::get('sedes', [SedeController::class, 'getAll'])->name('Sede:getAll');
+Route::get('sedes', [SedeController::class, 'getAll']);
 
 
 // Carreras
-Route::get('carreras', [CarreraController::class, 'getAll'])->name('Carrera:getAll');
-Route::post('carreras', [CarreraController::class, 'create'])->name('Carrera:create');
+Route::get('carreras', [CarreraController::class, 'getAll']);
+Route::post('carreras', [CarreraController::class, 'create']);
 
 // Asignaturas
-Route::get('asignaturas', [AsignaturaController::class, 'getAll'])->name('Asignatura:getAll');
+Route::get('asignaturas', [AsignaturaController::class, 'getAll']);
 
 // Archivos
-Route::post('archivos', [ArchivoController::class, 'storeArchivo'])->name('Archivo:create');
-Route::get('archivos/{id?}', [ArchivoController::class, 'get'])->name('Archivo:get');
+Route::post('archivos', [ArchivoController::class, 'storeArchivo']);
+Route::get('archivos/{id?}', [ArchivoController::class, 'get']);
 

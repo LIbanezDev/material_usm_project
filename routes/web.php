@@ -15,33 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', [Controller::class, 'index']);
-
+// Base routes
+Route::redirect('/', 'sedes');
+Route::view('/about', 'static.about')->name('Static::about');
+Route::view('/contacto','static.contact')->name('Static::contact');
 Route::get('/contribuir', [Controller::class, 'contribuir'])->name('Contribuir');
-Route::get('/about', function () {
-    return view('static.about');
-})->name('Static::about');
-Route::get('/contacto', function () {
-    return view('static.contact');
-})->name('Static::contact');
 
 
-
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('Auth::login')->middleware('guest');
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('Auth::register')->middleware('guest');
-
+// Auth
+Route::view('/login', 'auth.login')->name('Auth::login')->middleware('guest');
+Route::view('/register', 'auth.register')->name('Auth::register')->middleware('guest');
 Route::post('login', [AuthController::class, 'login'])->middleware('guest');
 Route::post('register', [AuthController::class, 'register'])->middleware('guest');
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth');
+
+// Postman testing
 Route::get('token', function () {
     return csrf_token();
 });
 
-Route::get('/carreras/{id_carrera}', [Controller::class, 'carreras'])->name('Carreras::getOne');
-Route::get('/carreras/{id_carrera}/asignatura/{id_asignatura}', [Controller::class, 'asignatura'])->name('Asignatura::archivos');
-Route::get('/sedes/{id_sede}', [Controller::class, 'sede'])->name('Sede::getOne');
+// Sedes
+Route::get('sedes', [Controller::class, 'sedes'])->name('Sede::getAll');
+// Carreras
+Route::get('sedes/{id_sede}/carreras', [Controller::class, 'carreras'])->name('Sede::getOne');
+// Asignaturas
+Route::get('sedes/{id_sede}/carreras/{id_carrera}/asignaturas', [Controller::class, 'asignaturas'])->name('Carreras::getOne');
+// Archivos
+Route::get('sedes/{id_sede}/carreras/{id_carrera}/asignaturas/{id_asignatura}/archivos', [Controller::class, 'archivos'])->name('Asignatura::archivos');

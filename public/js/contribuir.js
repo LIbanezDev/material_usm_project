@@ -1,17 +1,17 @@
 const DEFAULT_OPTION = `
     <option selected disabled> Selecciona una opción</option>`
 const fileNameSpan = document.getElementById('file-name');
-const sedeSelectArchivo = document.getElementById('input-sede-archivo');
+const sedeSelect = document.getElementById('input-sede-archivo');
 const carreraSelect = document.getElementById('input-carrera');
 const asignaturaSelect = document.getElementById('input-asignatura');
 const tipoArchivoSelect = document.getElementById('input-tipo_archivo');
 const formAgregarArchivo = document.getElementById('form-agregar-archivo')
 
-sedeSelectArchivo.addEventListener('change', async () => {
+sedeSelect.addEventListener('change', async () => {
     carreraSelect.disabled = true;
     carreraSelect.innerHTML = DEFAULT_OPTION;
     asignaturaSelect.innerHTML = DEFAULT_OPTION;
-    const url = `/api/carreras?sede=${sedeSelectArchivo.value}`
+    const url = `/api/carreras?sede=${sedeSelect.value}`
     const {data} = await axios.get(url)
     data.forEach((carrera) => {
         carreraSelect.innerHTML += `
@@ -32,9 +32,9 @@ carreraSelect.addEventListener('change', async () => {
     asignaturaSelect.disabled = false;
 })
 
-fileNameSpan.classList.remove('is-hidden');
-fileNameSpan.classList.add('file-name');
 document.getElementById('archivo-input').addEventListener('change', () => {
+    fileNameSpan.classList.remove('is-hidden');
+    fileNameSpan.classList.add('file-name');
     fileNameSpan.innerText = document.getElementById('archivo-input').files[0].name
 })
 

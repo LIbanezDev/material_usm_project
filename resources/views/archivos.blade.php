@@ -3,8 +3,22 @@
     Asignatura | {{ $asignatura->nombre }}
 @endsection
 @section('contenido')
-    <div class="columns">
-        <div class="column is-4-desktop is-12-mobile">
+    <div class="columns is-multiline">
+        <div class="column is-12">
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="{{route('Sede::getAll')}}">Sedes</a></li>
+                    <li><a href="{{route('Sede::getOne', $sede->id)}}">{{ $sede->nombre }}</a></li>
+                    <li><a href="{{route('Carreras::getOne',
+                                        ['id_sede' => $sede->id,
+                                            'id_carrera' => $carrera->id,
+                                            ]
+                                        )}}">{{$carrera->nombre}}</a></li>
+                    <li class="is-active"><a href="#" aria-current="page">{{ $asignatura->nombre }}</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="column is-2-desktop is-12-mobile">
             <form id="filter-form">
                 @foreach($tipos_archivo as $tipo)
                     <div class="field">
@@ -18,7 +32,6 @@
                 @endforeach
                 <button class="button is-info" type="submit"> Filtrar</button>
             </form>
-            <pre id="test"> {{$tipos_archivo}} </pre>
         </div>
         <div class="column">
             <div class="columns is-multiline">

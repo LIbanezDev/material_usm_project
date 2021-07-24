@@ -44,7 +44,7 @@ class AuthController extends Controller
             $usuario->save();
             return ['ok' => true];
         } catch (\Exception $ex) {
-            return ['ok' => false, 'msg' => 'El email ya se encuentra en uso.'];
+            return ['ok' => false, 'msg' => 'Email invalido.'];
         }
 
     }

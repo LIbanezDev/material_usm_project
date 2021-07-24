@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{csrf_token()}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="shortcut icon" href="{{asset('assets/usm/logo.png')}}" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://kit.fontawesome.com/f0c1ebd83a.js" crossorigin="anonymous"></script>
@@ -19,7 +20,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="{{asset('assets/usm/logo.png')}}" width="50" height="28" alt="logo">
+                <img src="{{asset('assets/usm/logo.png')}}" width="40" height="28" alt="logo">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -80,11 +81,8 @@
                         </form>
                     @else
                         <div class="buttons">
-                            <a class="button is-info" href="{{route('Auth::register')}}">
-                                <strong>Sign up</strong>
-                            </a>
                             <a class="button is-light" href="{{route('Auth::login')}}">
-                                Log in
+                                Ingresar
                             </a>
                         </div>
                     @endauth

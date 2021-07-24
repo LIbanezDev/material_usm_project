@@ -17,28 +17,32 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
+    public function sedes()
     {
         $sedes = Sede::with('carreras')->get();
-        return view('inicio', compact('sedes'));
+        return view('sedes', compact('sedes'));
     }
 
-    public function sede($id_sede)
+    public function carreras($id_sede)
     {
         $sede = Sede::with('carreras')->findOrFail($id_sede);
-        return view('sede', compact('sede'));
+        return view('carreras', compact('sede'));
     }
 
-    public function carreras($id_carrera)
+    public function asignaturas($id_sede, $id_carrera)
     {
         $carrera = Carrera::with('asignaturas')->findOrFail($id_carrera);
-        return view('carrera', compact('carrera'));
+        $sede = Sede::find($id_sede);
+        return view('asignaturas', compact('carrera', 'sede'));
     }
 
-    public function asignatura($id_carrera, $id_asignatura, Request $request)
+    public function archivos($id_sede, $id_carrera, $id_asignatura, Request $request)
     {
         $filters = $request->all();
         $asignatura = Asignatura::with('archivos')->findOrFail($id_asignatura);
+        $sede = Sede::find($id_sede);
+        $carrera = Carrera::find($id_carrera);
+
         if (isset($filters['evaluaciones'])) {
             if ($filters['evaluaciones'] != '') {
                 // TODO: implementar filtros
@@ -49,7 +53,7 @@ class Controller extends BaseController
             ->join('archivo', 'tipo_archivo.id', '=', 'archivo.tipo_id')
             ->where('archivo.asignatura_id', $id_asignatura)
             ->groupBy('tipo_archivo.id')->get();
-        return view('asignatura', compact('asignatura', 'tipos_archivo', 'filters'));
+        return view('archivos', compact('asignatura', 'tipos_archivo', 'filters', 'sede', 'carrera'));
     }
 
     public function contribuir()

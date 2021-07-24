@@ -43,10 +43,10 @@
             </form>
         </div>--}}
         <div class="column is-4">
-            <h2 class="title"> Archivo </h2>
+            <h2 class="title has-text-centered"> Archivo </h2>
             <form id="form-agregar-archivo">
                 <div class="field">
-                    <label class="label" for="input-sede">Sede</label>
+                    <label class="label" for="input-sede-archivo">Sede</label>
                     <div class="control">
                         <div class="select">
                             <select id="input-sede-archivo">

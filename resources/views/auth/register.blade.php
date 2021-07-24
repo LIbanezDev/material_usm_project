@@ -7,38 +7,45 @@
         <div class="column is-12">
             <h2 class="title has-text-centered"> Registro </h2>
         </div>
-        <div class="column is-half is-8">
-            <form id="form-login">
-                <div class="field">
-                    <label class="label" for="input-name">Name</label>
-                    <div class="control">
+        <div class="column is-half is-6">
+            <div class="box">
+                <form id="form-login" autocomplete="off">
+                    <div class="field">
+                        <label class="label" for="input-name">Nombre</label>
                         <div class="control">
-                            <input class="input" type="text" name="name"
-                                   id="input-name">
+                            <div class="control">
+                                <input required class="input" type="text" name="name"
+                                       id="input-name">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label" for="input-email">Email</label>
-                    <div class="control">
+                    <div class="field">
+                        <label class="label" for="input-email">Email</label>
                         <div class="control">
-                            <input class="input" type="text" name="email"
-                                   id="input-email">
+                            <div class="control">
+                                <input required class="input" type="text" name="email"
+                                       id="input-email">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label" for="input-email">Password</label>
-                    <div class="control">
+                    <div class="field">
+                        <label class="label" for="input-password">Contraseña</label>
                         <div class="control">
-                            <input class="input" type="password" name="password" id="input-password">
+                            <div class="control">
+                                <input required class="input" type="password" name="password" id="input-password">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="control">
-                    <button class="button is-success" id="btn-register">Registrar</button>
-                </div>
-            </form>
+                    <div class="control">
+                        <button class="button is-success" id="btn-register">
+                        <span class="icon is-small">
+                          <i class="fas fa-save"></i>
+                        </span>
+                            <strong>Continuar</strong>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection
