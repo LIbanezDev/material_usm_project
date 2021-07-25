@@ -297,6 +297,62 @@ class AsignaturasTableSeeder extends Seeder
         ['nombre' => "Costos y Presupuestos para la Administración", 'semestre' => 4],
         ['nombre' => "Optativo", 'semestre' => 4],
     ];
+    private $diseñografico = [
+        ['nombre' => "Diseño Basico", 'semestre' => 1],
+        ['nombre' => "Dibujo Natural 1", 'semestre' => 1],
+        ['nombre' => "Taller de Creatividad", 'semestre' => 1],
+        ['nombre' => "Historia del Arte", 'semestre' => 1],
+        ['nombre' => "Lenguaje", 'semestre' => 1],
+        ['nombre' => "Comp. Aplicada al Diseño", 'semestre' => 1],
+        ['nombre' => "Teoria del Color", 'semestre' => 2],
+        ['nombre' => "Dibujo Natural 2", 'semestre' => 2],
+        ['nombre' => "Historia del Diseño Grafico", 'semestre' => 2],
+        ['nombre' => "Metodologia de la Investigacion", 'semestre' => 2],
+        ['nombre' => "Grafica Computacional", 'semestre' => 2],
+        ['nombre' => "Matematicas Diseño", 'semestre' => 2],
+        ['nombre' => "Tipografía", 'semestre' => 3],
+        ['nombre' => "Taller de Ilustracion", 'semestre' => 3],
+        ['nombre' => "Fotografia", 'semestre' => 3],
+        ['nombre' => "Mercadotecnia", 'semestre' => 3],
+        ['nombre' => "Grafica Audiovisual", 'semestre' => 3],
+        ['nombre' => "Multimedia 1", 'semestre' => 3],
+        ['nombre' => "Talleres de Diseño 1", 'semestre' => 4],
+        ['nombre' => "Taller de Diseño Corporativo", 'semestre' => 4],
+        ['nombre' => "Preprensa Digital", 'semestre' => 4],
+        ['nombre' => "Redaccion Creativa", 'semestre' => 4],
+        ['nombre' => "Diseño Web", 'semestre' => 4],
+        ['nombre' => "Multimedia 2", 'semestre' => 4],
+        ['nombre' => "Taller de Diseño Editorial", 'semestre' => 5],
+        ['nombre' => "Taller de Diseño de Envases", 'semestre' => 5],
+        ['nombre' => "Teoria de la Comunicacion", 'semestre' => 5],
+        ['nombre' => "Publicidad I", 'semestre' => 5],
+        ['nombre' => "Produccion de Audio", 'semestre' => 5],
+        ['nombre' => "Estadistica para Diseño", 'semestre' => 5],
+        ['nombre' => "Taller de Merchandising", 'semestre' => 6],
+        ['nombre' => "Materiales y Recursos", 'semestre' => 6],
+        ['nombre' => "Publicidad II", 'semestre' => 6],
+        ['nombre' => "Animacion y Produccion de Videos", 'semestre' => 6],
+        ['nombre' => "Planificacion de Mercado", 'semestre' => 6],
+        ['nombre' => "Ingles de Negocios", 'semestre' => 6],
+        ['nombre' => "Señaletica y Sistemas de Informacion", 'semestre' => 7],
+        ['nombre' => "Taller Ferias y Exposiciones", 'semestre' => 7],
+        ['nombre' => "Sistemas de Produccion Grafica", 'semestre' => 7],
+        ['nombre' => "Semiotica", 'semestre' => 7],
+        ['nombre' => "Animacion 3D", 'semestre' => 7],
+        ['nombre' => "Produccion de Television", 'semestre' => 7],
+        ['nombre' => "Proyectos de Diseño", 'semestre' => 8],
+        ['nombre' => "Gerencia de Productos y Marcas", 'semestre' => 8],
+        ['nombre' => "Animacion 3D Avanzada", 'semestre' => 8],
+        ['nombre' => "Administracion de Empresas", 'semestre' => 8],
+        ['nombre' => "Electiva I", 'semestre' => 8],
+        ['nombre' => "Electiva II", 'semestre' => 8],
+        ['nombre' => "Legislacion y Propiedad Intelectual", 'semestre' => 9],
+        ['nombre' => "Etica Empresarial", 'semestre' => 9],
+        ['nombre' => "Creacion de Empresas", 'semestre' => 9],
+        ['nombre' => "Gestion de Proyectos de Diseño", 'semestre' => 9],
+        ['nombre' => "Electiva III", 'semestre' => 9],
+        ['nombre' => "Seminario de Titulo", 'semestre' => 9],
+    ];
     /**
      * Run the database seeds.
      *
@@ -373,6 +429,12 @@ class AsignaturasTableSeeder extends Seeder
         $carrera_empresas->sedes()->save(Sede::find(4));
         $carrera_empresas->sedes()->save(Sede::find(5));
 
+        $carrera_diseñografico = new Carrera();
+        $carrera_diseñografico->nombre = "Diseño Gráfico";
+        $carrera_diseñografico->regimen = 'D';
+        $carrera_diseñografico->save();
+        $carrera_diseñografico->sedes()->save(Sede::find(6));
+
         $tipo_archivo = new TipoArchivo();
         $tipo_archivo->nombre = 'Certamen';
         $tipo_archivo->puntaje = 20;
@@ -425,7 +487,12 @@ class AsignaturasTableSeeder extends Seeder
             $asignatura->save();
             $carrera_empresas->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->empresas[$i]['semestre']]]);
         }
-
+        for ($i = 0; $i < count($this->diseñografico); $i++) {
+            $asignatura = new Asignatura();
+            $asignatura->nombre = $this->diseñografico[$i]['nombre'];
+            $asignatura->save();
+            $carrera_diseñografico->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->diseñografico[$i]['semestre']]]);
+        }
         $archivo = new Archivo();
         $archivo->nombre = 'orange_cat.jpeg';
         $archivo->tipo_id = 1;
