@@ -1,7 +1,6 @@
-const DEFAULT_OPTION = `
-    <option selected disabled> Selecciona una opción</option>`
+const DEFAULT_OPTION = '<option selected disabled> Selecciona una opción</option>'
 const fileNameSpan = document.getElementById('file-name');
-const sedeSelect = document.getElementById('input-sede-archivo');
+const sedeSelect = document.getElementById('input-sede');
 const carreraSelect = document.getElementById('input-carrera');
 const asignaturaSelect = document.getElementById('input-asignatura');
 const tipoArchivoSelect = document.getElementById('input-tipo_archivo');

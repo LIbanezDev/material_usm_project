@@ -9,7 +9,7 @@
         </div>
         <div class="column is-half is-6">
             <div class="box">
-                <form id="form-login" autocomplete="off">
+                <form id="form-register" autocomplete="off">
                     <div class="field">
                         <label class="label" for="input-name">Nombre</label>
                         <div class="control">
@@ -50,13 +50,13 @@
     </div>
 @endsection
 @section('javascript')
-    const formLogin = document.getElementById('form-login');
+    const formRegister = document.getElementById('form-register');
     const nameInput = document.getElementById('input-name');
     const emailInput = document.getElementById('input-email');
     const passwordInput = document.getElementById('input-password');
     const btnRegister = document.getElementById('btn-register');
 
-    formLogin.addEventListener('submit', async(evt) => {
+    formRegister.addEventListener('submit', async(evt) => {
     evt.preventDefault();
     btnRegister.classList.add('is-loading');
     const body = {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,11 +8,8 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="shortcut icon" href="{{asset('assets/usm/logo.png')}}" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://kit.fontawesome.com/f0c1ebd83a.js" crossorigin="anonymous"></script>
-    <style>
-        @yield('css')
-    </style>
     <title>@yield('titulo')</title>
 </head>
 <body>

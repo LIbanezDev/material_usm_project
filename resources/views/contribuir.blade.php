@@ -46,10 +46,10 @@
             <h2 class="title has-text-centered"> Archivo </h2>
             <form id="form-agregar-archivo">
                 <div class="field">
-                    <label class="label" for="input-sede-archivo">Sede</label>
+                    <label class="label" for="input-sede">Sede</label>
                     <div class="control">
                         <div class="select">
-                            <select id="input-sede-archivo">
+                            <select id="input-sede">
                                 <option selected disabled> Selecciona una opción</option>
                                 @foreach($sedes as $sede)
                                     <option value="{{$sede->id}}">{{$sede->nombre}}</option>

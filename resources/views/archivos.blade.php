@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 @endforeach
-                <button class="button is-info" type="submit"> Filtrar</button>
+                <button class="button is-info" type="submit"> Filtrar </button>
             </form>
         </div>
         <div class="column">
@@ -77,6 +77,4 @@
     if(document.getElementById('Control').checked) filtros += 'control'
     alert(filtros)
     })
-    document.getElementById('test').innerText =
-    JSON.stringify(JSON.parse(document.getElementById('test').textContent), null, 4)
 @endsection
