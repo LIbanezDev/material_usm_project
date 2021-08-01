@@ -39,7 +39,7 @@
                     <h2> Archivos de {{ $asignatura->nombre }}</h2>
                 </div>
                 @foreach($asignatura->archivos as $archivo)
-                    <div class="column is-3-desktop is-4-tablet is-6-mobile">
+                    <div class="column is-4-desktop is-4-tablet is-6-mobile">
                         <div class="card">
                             <div class="card-content">
                                 <div class="media">
@@ -53,12 +53,10 @@
                                     <div class="media-content">
                                         <p class="title is-6">
                                             <a href="{{asset('material/'.$archivo->nombre)}}"
-                                               target="_blank"
-                                               download="{{$archivo->nombre}}">
+                                               target="_blank">
                                                 {{$archivo->nombre}}
                                             </a>
                                         </p>
-                                        <p class="subtitle is-6">@johnsmith</p>
                                     </div>
                                 </div>
                             </div>
