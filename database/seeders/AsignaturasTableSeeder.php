@@ -493,28 +493,5 @@ class AsignaturasTableSeeder extends Seeder
             $asignatura->save();
             $carrera_diseñografico->asignaturas()->attach([1 => ['asignatura_id' => $asignatura->id, 'semestre' => $this->diseñografico[$i]['semestre']]]);
         }
-        $archivo = new Archivo();
-        $archivo->nombre = 'orange_cat.jpeg';
-        $archivo->tipo_id = 1;
-        $archivo->asignatura_id = 1;
-        $archivo->save();
-
-        $archivo = new Archivo();
-        $archivo->nombre = 'black_cat.jpeg';
-        $archivo->tipo_id = 1;
-        $archivo->asignatura_id = 1;
-        $archivo->save();
-
-        $archivo = new Archivo();
-        $archivo->nombre = 'calico_cat.jpeg';
-        $archivo->tipo_id = 2;
-        $archivo->asignatura_id = 1;
-        $archivo->save();
-
-        $archivo = new Archivo();
-        $archivo->nombre = 'BD-2019-C1.pdf';
-        $archivo->tipo_id = 1;
-        $archivo->asignatura_id = 17;
-        $archivo->save();
     }
 }
