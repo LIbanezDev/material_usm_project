@@ -31,9 +31,13 @@ Route::get('carreras', [CarreraController::class, 'getAll']);
 Route::post('carreras', [CarreraController::class, 'create']);
 
 // Asignaturas
-Route::get('asignaturas', [AsignaturaController::class, 'getAll']);
+Route::post('asignaturas', [AsignaturaController::class, 'create']);
+Route::get('asignaturas/{id?}', [AsignaturaController::class, 'get']);
+Route::delete('asignaturas/{id}', [AsignaturaController::class, 'delete']);
+Route::patch('asignaturas/{id}', [AsignaturaController::class, 'udpdate']);
 
 // Archivos
-Route::post('archivos', [ArchivoController::class, 'storeArchivo']);
+Route::post('archivos', [ArchivoController::class, 'create']);
 Route::get('archivos/{id?}', [ArchivoController::class, 'get']);
+Route::delete('archivos/{id}', [ArchivoController::class, 'delete']);
 

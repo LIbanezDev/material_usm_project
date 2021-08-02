@@ -5,17 +5,37 @@
 @section('contenido')
     <div class="columns">
         <div class="column">
-            <div class="tabs is-centered">
+            <div class="tabs is-centered is-boxed">
                 <ul>
-                    <li class="is-active" id="tab-archivo"><a>Archivo</a></li>
-                    <li id="tab-asignatura"><a>Asignatura</a></li>
-                    <li id="tab-carrera"><a>Carrera</a></li>
+                    <li id="tab-archivo">
+                        <a>
+                            <span class="icon is-small">
+                                <i class="fas fa-file-alt" aria-hidden="true"></i>
+                            </span>
+                            Archivo
+                        </a>
+                    </li>
+                    <li id="tab-asignatura">
+                        <a>
+                            <span class="icon is-small">
+                                <i class="fas fa-book" aria-hidden="true"></i>
+                            </span>
+                            Asignatura
+                        </a>
+                    </li>
+                    <li id="tab-carrera"><a>
+                            <span class="icon is-small">
+                                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            </span>
+                            Carrera
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="columns is-centered">
-        <form class="column is-6 animate__animated animate__fadeIn" id="form-agregar-archivo">
+        <form class="column is-6 animate__animated animate__fadeIn is-hidden" id="form-agregar-archivo">
             <div class="field">
                 <label class="label" for="input-sede">Sede</label>
                 <div class="control">
@@ -79,7 +99,7 @@
                     </label>
                 </div>
             </div>
-            <button class="button is-success" type="submit" id="btn-subir-archivo"> Subir</button>
+            <button class="button is-success" type="submit" id="btn-subir-archivo"> Subir archivo </button>
         </form>
         <form class="column is-6 is-hidden animate__animated animate__fadeIn" id="form-agregar-asignatura">
             <div class="field">
@@ -156,7 +176,7 @@
                     </div>
                 </div>
             </div>
-            <button class="button is-success" id="btn-agregar-carrera"> Agregar Carrera </button>
+            <button class="button is-success" id="btn-agregar-carrera"> Agregar Carrera</button>
         </form>
     </div>
 @endsection

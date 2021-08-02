@@ -34,7 +34,7 @@
                     Inicio
                 </a>
 
-                <a class="navbar-item" href="{{route('Contribuir')}}">
+                <a class="navbar-item" href="{{route('Contribuir', 'archivo')}}">
                     Contribuir
                 </a>
 

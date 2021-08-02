@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Archivo;
 use App\Models\Asignatura;
 use App\Models\TipoArchivo;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ArchivoController extends Controller
 {
     private $allowedExtensions = ['pdf', 'docx', 'jpg', 'jpeg', 'png', 'doc', 'xlsx'];
 
-    public function storeArchivo(Request $request): JsonResponse
+    public function create(Request $request)
     {
         $params = $request->all();
         $file_extension = $request->file->getClientOriginalExtension();
@@ -31,14 +31,13 @@ class ArchivoController extends Controller
         $archivo->asignatura()->associate($asignatura);
         $archivo->tipo()->associate($tipo_archivo);
         $archivo->save();
-        return response()->json(['data' => 'You have successfully uploaded "' . $generated_new_name . '"'], 201);
+        return response('Archivo subido exitosamente', 201);
     }
 
     function get(Request $request, $id = null): array
     {
         $filters = $request->all();
         $archivos = Archivo::with('tipo');
-
         if (isset($id)) {
             $archivos->find($id);
         } else {
@@ -46,6 +45,19 @@ class ArchivoController extends Controller
             if (isset($filters['asignatura'])) $archivos->where('asignatura_id', (int)$filters['asignatura']);
             if (isset($filters['usuario_id'])) $archivos->where('usuario_id', (int)$filters['usuario_id']);
         }
-        return ['data' => $archivos->orderBy('created_at', 'desc')->get()];
+        return $archivos->orderBy('created_at', 'desc')->get();
+    }
+
+    function delete($id)
+    {
+        try {
+            $archivo = Archivo::findOrFail($id);
+            $full_path = 'material/' . $archivo->nombre;
+            File::delete($full_path);
+            $archivo->delete();
+            return 'Archivo eliminado';
+        } catch (\Exception $exception) {
+            return response('Archivo no encontrado', 404);
+        }
     }
 }

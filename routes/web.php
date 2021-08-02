@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'sedes');
 Route::view('/about', 'static.about')->name('Static::about');
 Route::view('/contacto','static.contact')->name('Static::contact');
-Route::get('/contribuir', [Controller::class, 'contribuir'])->name('Contribuir');
+Route::get('/contribuir/{type?}', [Controller::class, 'contribuir'])->name('Contribuir');
 
 
 // Auth

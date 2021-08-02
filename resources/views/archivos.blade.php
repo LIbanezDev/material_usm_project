@@ -10,9 +10,7 @@
                     <li><a href="{{route('Sede::getAll')}}">Sedes</a></li>
                     <li><a href="{{route('Sede::getOne', $sede->id)}}">{{ $sede->nombre }}</a></li>
                     <li><a href="{{route('Carreras::getOne',
-                                        ['id_sede' => $sede->id,
-                                            'id_carrera' => $carrera->id,
-                                            ]
+                                        ['id_sede' => $sede->id, 'id_carrera' => $carrera->id]
                                         )}}">{{$carrera->nombre}}</a></li>
                     <li class="is-active"><a href="#" aria-current="page">{{ $asignatura->nombre }}</a></li>
                 </ul>
@@ -30,7 +28,7 @@
                         </div>
                     </div>
                 @endforeach
-                <button class="button is-info" type="submit"> Filtrar </button>
+                <button class="button is-info" type="submit"> Filtrar</button>
             </form>
         </div>
         <div class="column">

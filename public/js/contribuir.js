@@ -21,30 +21,16 @@ const tabsAndForms = {
     },
 }
 
-// Manejar tabs ocultando y mostrando los respectivos formularios
-Object.keys(tabsAndForms).forEach(key => {
-    tabsAndForms[key].tab.addEventListener('click', () => {
-        tabsAndForms[key].tab.classList.add('is-active');
-        tabsAndForms[key].form.classList.remove('is-hidden');
-        Object.keys(tabsAndForms).forEach(keyTwo => {
-            if (keyTwo !== key) {
-                tabsAndForms[keyTwo].form.classList.add('is-hidden');
-                tabsAndForms[keyTwo].tab.classList.remove('is-active')
-            }
-        })
-    })
-})
-
-const fireAlert = (title, content, image = 'https://miro.medium.com/max/724/1*kcHIKmRQn9KxfZk6QT0QYg.jpeg', timer = 3000) =>
+const fireAlert = (title, content, imageUrl = 'https://miro.medium.com/max/724/1*kcHIKmRQn9KxfZk6QT0QYg.jpeg', timer = 3000) =>
     Swal.fire({
         title: title,
         html: content,
         timer,
         timerProgressBar: true,
-        imageUrl: image,
+        imageUrl,
         imageWidth: 400,
         imageHeight: 200,
-        imageAlt: 'Thanks',
+        imageAlt: 'img alert',
         showClass: {
             popup: 'animate__animated animate__jackInTheBox',
             showCloseButton: false
@@ -88,7 +74,7 @@ tabsAndForms.archivo.form.addEventListener('submit', async (evt) => {
     try {
         evt.preventDefault();
         btnSubirArchivo.classList.add('is-loading');
-        const url = 'api/archivos';
+        const url = '/api/archivos';
         const formData = new FormData();
         const archivo = document.getElementById('archivo-input').files[0];
         formData.append('file', archivo)
@@ -136,3 +122,24 @@ tabsAndForms.carrera.form.addEventListener('submit', async (evt) => {
     tabsAndForms.carrera.form.reset()
     btnAgregarCarrera.classList.remove('is-loading')
 })
+
+// Manejar tabs ocultando y mostrando los respectivos formularios
+Object.keys(tabsAndForms).forEach(key => {
+    const path = window.location.pathname.split('/').pop();
+    if (key === path) {
+        document.getElementById(`tab-${key}`).classList.add('is-active')
+        tabsAndForms[key].form.classList.remove('is-hidden')
+    }
+    tabsAndForms[key].tab.addEventListener('click', () => {
+        tabsAndForms[key].tab.classList.add('is-active');
+        tabsAndForms[key].form.classList.remove('is-hidden');
+        window.history.pushState("", "Material USM | Contribuir", "/contribuir/" + key);
+        Object.keys(tabsAndForms).forEach(keyTwo => {
+            if (keyTwo !== key) {
+                tabsAndForms[keyTwo].form.classList.add('is-hidden');
+                tabsAndForms[keyTwo].tab.classList.remove('is-active')
+            }
+        })
+    })
+})
+
