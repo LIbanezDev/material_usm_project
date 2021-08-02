@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrera;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +22,11 @@ class CarreraController extends Controller
     function create(Request $request)
     {
         $data = $request->all();
-        return $data;
+        $nueva_carrera = new Carrera();
+        $nueva_carrera->nombre = $data['nombre'];
+        $nueva_carrera->regimen = $data['regimen'];
+        $nueva_carrera->save();
+        $nueva_carrera->sedes()->attach($data['sedes']);
+        return ['data' => 'Carrera creada'];
     }
 }

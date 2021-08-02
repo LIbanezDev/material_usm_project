@@ -20,15 +20,15 @@
                 <img src="{{asset('assets/usm/logo.png')}}" width="40" height="28" alt="logo">
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-               data-target="navbarBasicExample">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="true"
+               data-target="nav-menu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="nav-menu" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/">
                     Inicio

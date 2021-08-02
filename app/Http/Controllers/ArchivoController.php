@@ -5,18 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Archivo;
 use App\Models\Asignatura;
 use App\Models\TipoArchivo;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ArchivoController extends Controller
 {
-    public function storeArchivo(Request $request)
+    private $allowedExtensions = ['pdf', 'docx', 'jpg', 'jpeg', 'png', 'doc', 'xlsx'];
+
+    public function storeArchivo(Request $request): JsonResponse
     {
         $params = $request->all();
+        $file_extension = $request->file->getClientOriginalExtension();
+        if (!in_array($file_extension, $this->allowedExtensions))
+            return response()->json(['data' => 'La extension no esta permitida'], 400);
+
         $asignatura = Asignatura::find((int)$params['asignatura']);
         $tipo_archivo = TipoArchivo::find((int)$params['tipo']);
         $generated_new_name =
-            $tipo_archivo->nombre . '-' . $asignatura->nombre . '-' . time() . '.' .
-            $request->file->getClientOriginalExtension();
+            $tipo_archivo->nombre . '-' . $asignatura->nombre . '-' . time() . '.' . $file_extension;
         $upload_path = public_path('material');
         $request->file->move($upload_path, $generated_new_name);
 
@@ -25,7 +31,7 @@ class ArchivoController extends Controller
         $archivo->asignatura()->associate($asignatura);
         $archivo->tipo()->associate($tipo_archivo);
         $archivo->save();
-        return response()->json(['success' => 'You have successfully uploaded "' . $generated_new_name . '"'], 201);
+        return response()->json(['data' => 'You have successfully uploaded "' . $generated_new_name . '"'], 201);
     }
 
     function get(Request $request, $id = null): array
