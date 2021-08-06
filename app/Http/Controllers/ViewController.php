@@ -10,10 +10,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
-class Controller extends BaseController
+class ViewController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -43,11 +43,6 @@ class Controller extends BaseController
         $sede = Sede::find($id_sede);
         $carrera = Carrera::find($id_carrera);
 
-        if (isset($filters['evaluaciones'])) {
-            if ($filters['evaluaciones'] != '') {
-                // TODO: implementar filtros
-            }
-        }
         $tipos_archivo = DB::table('tipo_archivo')
             ->selectRaw('tipo_archivo.id as id, tipo_archivo.nombre, count(archivo.id) as cantidad')
             ->join('archivo', 'tipo_archivo.id', '=', 'archivo.tipo_id')

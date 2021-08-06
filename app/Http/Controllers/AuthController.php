@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class AuthController extends Controller
+class AuthController extends ViewController
 {
     public function login()
     {
@@ -43,7 +44,7 @@ class AuthController extends Controller
             $usuario->password = Hash::make($data['password']);
             $usuario->save();
             return ['ok' => true];
-        } catch (\Exception $ex) {
+        } catch (Exception $ex) {
             return ['ok' => false, 'msg' => 'Email invalido.'];
         }
 

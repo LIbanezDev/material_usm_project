@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-class AsignaturaController extends Controller
+class AsignaturaController extends ViewController
 {
     function get(Request $request, $id = null): Collection
     {
@@ -29,7 +29,7 @@ class AsignaturaController extends Controller
         $asignatura->nombre = $data['nombre'];
         $asignatura->save();
         $asignatura->carreras()->attach($data['carreras']);
-        return response(['msg' => 'Carrera creada con exito'], 201);
+        return response(['msg' => 'Asignatura creada con exito'], 201);
     }
 
     function delete($id)
@@ -37,7 +37,7 @@ class AsignaturaController extends Controller
         try {
             Asignatura::findOrFail($id)->delete();
             return ['msg' => 'Registro eliminado exitosamente'];
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response(['msg' => 'Registro no encontrado'], 404);
         }
     }
@@ -47,7 +47,7 @@ class AsignaturaController extends Controller
         try {
             Asignatura::findOrFail($id)->update($request->all());
             return ['msg' => 'Registro actualizado exitosamente'];
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response(['msg' => 'Registro no encontrado'], 404);
         }
     }

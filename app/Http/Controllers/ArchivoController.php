@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Archivo;
 use App\Models\Asignatura;
 use App\Models\TipoArchivo;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class ArchivoController extends Controller
+class ArchivoController extends ViewController
 {
     private $allowedExtensions = ['pdf', 'docx', 'jpg', 'jpeg', 'png', 'doc', 'xlsx'];
 
-    public function create(Request $request)
+    public function upload(Request $request)
     {
         $params = $request->all();
         $file_extension = $request->file->getClientOriginalExtension();
@@ -40,11 +41,12 @@ class ArchivoController extends Controller
         $archivos = Archivo::with('tipo');
         if (isset($id)) {
             $archivos->find($id);
-        } else {
-            if (isset($filters['tipo'])) $archivos->where('tipo_id', (int)$filters['tipo']);
-            if (isset($filters['asignatura'])) $archivos->where('asignatura_id', (int)$filters['asignatura']);
-            if (isset($filters['usuario_id'])) $archivos->where('usuario_id', (int)$filters['usuario_id']);
         }
+
+        if (isset($filters['tipo'])) $archivos->where('tipo_id', (int)$filters['tipo']);
+        if (isset($filters['asignatura'])) $archivos->where('asignatura_id', (int)$filters['asignatura']);
+        if (isset($filters['usuario_id'])) $archivos->where('usuario_id', (int)$filters['usuario_id']);
+
         return $archivos->orderBy('created_at', 'desc')->get();
     }
 
@@ -56,7 +58,7 @@ class ArchivoController extends Controller
             File::delete($full_path);
             $archivo->delete();
             return 'Archivo eliminado';
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response('Archivo no encontrado', 404);
         }
     }

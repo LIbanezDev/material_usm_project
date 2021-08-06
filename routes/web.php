@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'sedes');
 Route::view('/about', 'static.about')->name('Static::about');
 Route::view('/contacto', 'static.contact')->name('Static::contact');
-Route::get('/contribuir/{type?}', [Controller::class, 'contribuir'])->name('Contribuir');
+Route::get('/contribuir/{type?}', [ViewController::class, 'contribuir'])->name('Contribuir');
 
 
 // Auth
@@ -35,10 +35,13 @@ Route::get('token', function () {
 });
 
 // Sedes
-Route::get('sedes', [Controller::class, 'sedes'])->name('Sede::getAll');
+Route::get('sedes', [ViewController::class, 'sedes'])->name('Sede::getAll');
+
 // Carreras
-Route::get('sedes/{id_sede}/carreras', [Controller::class, 'carreras'])->name('Sede::getOne');
+Route::get('sedes/{id_sede}/carreras', [ViewController::class, 'carreras'])->name('Sede::getOne');
+
 // Asignaturas
-Route::get('sedes/{id_sede}/carreras/{id_carrera}/asignaturas', [Controller::class, 'asignaturas'])->name('Carreras::getOne');
+Route::get('sedes/{id_sede}/carreras/{id_carrera}/asignaturas', [ViewController::class, 'asignaturas'])->name('Carreras::getOne');
+
 // Archivos
-Route::get('sedes/{id_sede}/carreras/{id_carrera}/asignaturas/{id_asignatura}/archivos', [Controller::class, 'archivos'])->name('Asignatura::archivos');
+Route::get('sedes/{id_sede}/carreras/{id_carrera}/asignaturas/{id_asignatura}/archivos', [ViewController::class, 'archivos'])->name('Asignatura::archivos');

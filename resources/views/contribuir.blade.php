@@ -85,7 +85,7 @@
             <div class="field">
                 <div class="file">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="archivo" id="archivo-input">
+                        <input class="file-input" type="file" name="archivo" id="archivo-input" accept=".pdf,.docx,.jpg,.jpeg,.png,.docx,.xlsx">
                         <span class="file-cta">
                           <span class="file-icon">
                             <i class="fas fa-upload"></i>

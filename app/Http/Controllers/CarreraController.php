@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-class CarreraController extends Controller
+class CarreraController extends ViewController
 {
     function get(Request $request): Collection
     {

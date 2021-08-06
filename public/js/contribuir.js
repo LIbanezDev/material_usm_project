@@ -21,7 +21,7 @@ const tabsAndForms = {
     },
 }
 
-const fireAlert = (title, content, imageUrl = 'https://miro.medium.com/max/724/1*kcHIKmRQn9KxfZk6QT0QYg.jpeg', timer = 3000) =>
+const fireAlert = (title, content, imageUrl = 'https://miro.medium.com/max/724/1*kcHIKmRQn9KxfZk6QT0QYg.jpeg', timer = 6000) =>
     Swal.fire({
         title: title,
         html: content,
@@ -98,8 +98,6 @@ tabsAndForms.archivo.form.addEventListener('submit', async (evt) => {
     btnSubirArchivo.classList.remove('is-loading');
 })
 
-
-// TODO: Implementar formulario de agregacion de asignatura (hard mode)
 
 // Subir carrera
 tabsAndForms.carrera.form.addEventListener('submit', async (evt) => {

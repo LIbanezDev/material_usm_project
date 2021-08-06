@@ -20,7 +20,7 @@
                 <img src="{{asset('assets/usm/logo.png')}}" width="40" height="28" alt="logo">
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="true"
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="true" id="nav-toggle"
                data-target="nav-menu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -100,6 +100,13 @@
 @yield('script')
 
 <script>
+    document.getElementById("nav-toggle").addEventListener ("click", () => {
+        const nav = document.getElementById("nav-menu");
+        const className = nav.getAttribute("class");
+        console.log(className)
+        nav.className = className === 'navbar-menu' ? 'navbar-menu is-active' : 'navbar-menu';
+
+    })
     @yield("javascript")
 </script>
 </body>

@@ -3,7 +3,6 @@
 use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\CarreraController;
-use App\Http\Controllers\CatController;
 use App\Http\Controllers\SedeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -38,7 +38,7 @@ Route::delete('asignaturas/{id}', [AsignaturaController::class, 'delete']);
 Route::patch('asignaturas/{id}', [AsignaturaController::class, 'udpdate']);
 
 // Archivos
-Route::post('archivos', [ArchivoController::class, 'create']);
+Route::post('archivos', [ArchivoController::class, 'upload']);
 Route::get('archivos/{id?}', [ArchivoController::class, 'get']);
 Route::delete('archivos/{id}', [ArchivoController::class, 'delete']);
 
