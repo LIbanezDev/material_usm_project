@@ -15,7 +15,8 @@ class Asignatura extends Model
 
     public function carreras(): BelongsToMany
     {
-        return $this->belongsToMany(Carrera::class, 'asignatura_carrera')->withPivot('semestre');
+        return $this->belongsToMany(Carrera::class, 'asignatura_carrera')
+            ->withPivot('semestre');
     }
 
     public function archivos(): HasMany

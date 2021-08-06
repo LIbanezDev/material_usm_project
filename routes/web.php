@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // Base routes
 Route::redirect('/', 'sedes');
 Route::view('/about', 'static.about')->name('Static::about');
-Route::view('/contacto','static.contact')->name('Static::contact');
+Route::view('/contacto', 'static.contact')->name('Static::contact');
 Route::get('/contribuir/{type?}', [Controller::class, 'contribuir'])->name('Contribuir');
 
 

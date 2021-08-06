@@ -19,7 +19,7 @@ class Controller extends BaseController
 
     public function sedes()
     {
-        $sedes = Sede::with('carreras')->get();
+        $sedes = Sede::all();
         return view('sedes', compact('sedes'));
     }
 

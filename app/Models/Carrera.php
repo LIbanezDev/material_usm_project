@@ -20,7 +20,8 @@ class Carrera extends Model
 
     public function asignaturas(): BelongsToMany
     {
-        return $this->belongsToMany(Asignatura::class, 'asignatura_carrera')->withPivot('semestre');
+        return $this->belongsToMany(Asignatura::class, 'asignatura_carrera')
+            ->withPivot('semestre')->groupBy('semestre');
     }
 
     protected $fillable = [

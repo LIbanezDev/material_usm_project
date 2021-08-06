@@ -17,7 +17,7 @@ class ArchivoController extends Controller
         $params = $request->all();
         $file_extension = $request->file->getClientOriginalExtension();
         if (!in_array($file_extension, $this->allowedExtensions))
-            return response()->json(['data' => 'La extension no esta permitida'], 400);
+            return response('La extension ' . $file_extension . ' no esta permitida', 400);
 
         $asignatura = Asignatura::find((int)$params['asignatura']);
         $tipo_archivo = TipoArchivo::find((int)$params['tipo']);

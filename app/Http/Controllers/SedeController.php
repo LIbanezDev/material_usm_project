@@ -6,7 +6,7 @@ use App\Models\Sede;
 
 class SedeController extends Controller
 {
-    function getAll(): array
+    function get(): array
     {
         $sedes = Sede::with('carreras')->get();
         return ['data' => $sedes];

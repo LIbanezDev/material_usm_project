@@ -99,7 +99,7 @@
                     </label>
                 </div>
             </div>
-            <button class="button is-success" type="submit" id="btn-subir-archivo"> Subir archivo </button>
+            <button class="button is-success" type="submit" id="btn-subir-archivo"> Subir archivo</button>
         </form>
         <form class="column is-6 is-hidden animate__animated animate__fadeIn" id="form-agregar-asignatura">
             <div class="field">

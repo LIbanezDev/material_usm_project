@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\CatController;
 use App\Http\Controllers\SedeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,12 +24,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Sedes
-Route::get('sedes', [SedeController::class, 'getAll']);
-
+Route::get('sedes', [SedeController::class, 'get']);
 
 // Carreras
-Route::get('carreras', [CarreraController::class, 'getAll']);
+Route::get('carreras', [CarreraController::class, 'get']);
 Route::post('carreras', [CarreraController::class, 'create']);
+
 
 // Asignaturas
 Route::post('asignaturas', [AsignaturaController::class, 'create']);

@@ -14,7 +14,8 @@
                         <label class="label" for="input-email">Email</label>
                         <div class="control">
                             <div class="control">
-                                <input required class="input" value="{{app('request')->input('email')}}" type="text" name="email"
+                                <input required class="input" value="{{app('request')->input('email')}}" type="text"
+                                       name="email"
                                        id="input-email">
                             </div>
                         </div>

@@ -78,8 +78,11 @@
                         </form>
                     @else
                         <div class="buttons">
-                            <a class="button is-light" href="{{route('Auth::login')}}">
-                                Ingresar
+                            <a class="button" href="{{route('Auth::login')}}">
+                                <span class="icon">
+                                  <i class="fas fa-sign-in-alt"></i>
+                                </span>
+                                <span>Ingresar</span>
                             </a>
                         </div>
                     @endauth
@@ -91,9 +94,6 @@
 <main class="p-4">
     @yield("contenido")
 </main>
-<footer>
-
-</footer>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{asset('js/axios_config.js')}}"></script>

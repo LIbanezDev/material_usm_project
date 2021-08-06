@@ -45,6 +45,11 @@
                         </button>
                     </div>
                 </form>
+                <div class="has-text-right">
+                    <a href="{{route('Auth::login')}}">
+                        <strong>Ir a login</strong>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
